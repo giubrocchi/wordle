@@ -1,0 +1,37 @@
+input{
+  width: 40px;
+  font-size: 25px;
+  margin-bottom: 25px;
+  outline: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+input:hover{
+  border-color: black;
+  border-width: 1px;
+}
+
+body{
+  text-align: center;
+  padding-top: 5%;
+}
+
+p{
+  font-family: sans-serif;
+  line-height: 30px;
+  height: 60px;
+}
+
+.letras{
+  display: inline-block;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 140%;
+  background-color: #d6d6d6;
+  width: 20px;
+  padding: 4px;
+  margin: 0.5%;
+  margin-bottom: 25px;
+  border-radius: 8px;
+}
