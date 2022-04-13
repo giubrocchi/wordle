@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 var cors = require('cors');
 
-pal =  ["ababa","abaca","abada","abade","abado","abafa","abafe","abafo","abaju","abala","abale","abalo","abama","abana","abane","abapo","abara","abare","abata","abate","abati","abato","abdal","abebe","abece","abedo","abede","abeta","abete","abeto","abexi","abibe","abico","abilo","abita","abito","ablua","ablui","abluo","aboar","abobo","aboca","abofe","abohm","aboio","aboiz","abola","abole","aboli","aboma","abona","abone","aboco","abram","abras","abrem","abres","abreu","abria","abris","abriu","abube","abudo","abuna","abusa","abuse","abuta","abuxo","acaba","acabe","acabo","acada","acaia","acaio","acaju","acaja","acalo","acama","acana","acapu","acari","acara","acata","acate","acato",
+const dicio =  ["ababa","abaca","abada","abade","abado","abafa","abafe","abafo","abaju","abala","abale","abalo","abama","abana","abane","abapo","abara","abare","abata","abate","abati","abato","abdal","abebe","abece","abedo","abede","abeta","abete","abeto","abexi","abibe","abico","abilo","abita","abito","ablua","ablui","abluo","aboar","abobo","aboca","abofe","abohm","aboio","aboiz","abola","abole","aboli","aboma","abona","abone","aboco","abram","abras","abrem","abres","abreu","abria","abris","abriu","abube","abudo","abuna","abusa","abuse","abuta","abuxo","acaba","acabe","acabo","acada","acaia","acaio","acaju","acaja","acalo","acama","acana","acapu","acari","acara","acata","acate","acato",
 "acaua","acaca","acaem","aceca","aceda","acede","acefe","acelo","acena","acene","acero","aceso","aceto","achai","acham","achas","achei","achem","aches","achim","achou","acibe","acica","acila","acioa","aclia","acnes","acoar","acode","acona","acori","acral","acres","acrol","acroa","acreu","acuai","acuam","acuar","acuas","acuda","acudi","acudo","acuei","acuem","acues","acume","acuma","acuna","acuou","acura","acuri","acure","acusa","acuse","acuso","acuta","acuti","adaca","adage","adail","adali","adama","adamo","adejo","adela","adele","adelo","adema","adere","aderi","adeso","adiai","adiam","adias","adibe","adica","adido","adiei","adiem","adies","adino","adiou","adira","adiro","adita","adite","adito","adixa","adoba","adobe","adobo","adoce","adoga","adoli","adolo","adora","adore","adoro","adota","adote","adoto","adova","adoxa","adoxo","adoca","adoco","aduar","aduba","adube","adubo","adufa","adufe","adufo","adula","adule","adulo","aduro","advim","advem","adion","aerar","afaga","afana","afane","afano","afear","afefe","afega","afere","aferi","afeta","afete","afiai","afiam","afiar","afias","afiei","afiem","afies","afilo","afina","afine","afino","afiou","afira","afiro","afito","afixa","afixe","afixo","aflar","aflua","aflui","afluo","afoba","afobe","afobo","afofa","afofe","afofo","afoga","afogo","afono","afora","afore","aforo","afoxe","afros","aftas","afura","agabe","agace","agada","agala","agama","agami","agara","agare","agati","agave","ageia","agema","agiam","agiar","agias","agido","agira","agita","agite","agito","aglia","agnal","agnus","agoge","agogo","agrar","agraz","agror","agrao","agrem","aguar","aguai","aguce","aguda","agude","aguei","aguem","aguou","aguti","aguca","aguco","aiaia","aiala","aiara","aiaca","aidro","aigue","ainsa","aioca","aiola","aioro","aipim","aipos","airar","aires","airol","airao","aitao","aiuba","aiuca","aiuiu","aivao","aixes","ajabo","ajacu","ajais","ajaja","ajapa","ajara","ajare","ajeru","ajobo","ajuba","ajude","ajudo","ajuga","ajupe","ajupa","ajuri","ajuru","alaba","alabe","alada","alafe","alaga","alago","alala","alano","alara","alaus","albor","alboi","alcaz","alcei","alcem","alces","alcis","aldea","aldol","alear","alefe","alega","alego","aleia","aleli","alelo","alema","alepo","aleta","aleto","alfar","alfas","alfil","alfim","alfir","alfol","alfoz","alfur","algar","algas","algaz","alger",
 "algia","algol","algor","algur","alhal","alhas","alhos","aliai","aliam","aliei","aliem","alies","alija","alije","alijo","alila","alilo","alime","alina","aliou","alisa","alise","aliso","alita","aljuz","almez","almuz","aloca","aloco","alode","alofe","aloja","aloje","alojo","alose","alote","aloes","alpes","alpao","alsol","altas","alter","altea","altor","aluar","aluda","alude","aludi","aludo","alufa","aluga","alugo","aluir","aluja","alume","aluna","alvar","alvas","alvor","alvos","alvao","alcai","alcam","alcas","alcou","alcuz","amaci","amado","amadu","amaga","amais","amala","amame","amamu","amana","amapa","amara","amare","amaro","amato","amava","ambel","ambia","ambom","ambre","ambua","ambui","ambao","amear","ameei","ameia","ameis","ameju","amela","amelo","amele","amena","ameca","amial","amiba","amida","amiga","amigo","amila","amilo","amima","amime","amimo","amina","amino","amite","amito","amojo","amola","amole","amolo","amomo","amore","amota","amuar","amura","amuri","amure","amuso","anabi","anaco","anaca","anace","anafa","anafe","anais","anaia","anaja","anaje","aname","anani","anano","anana","anata","anati","anato","anaue","ancas","ancho","ancil","ancia","andai","andam","andas","andei","andem","andes","andim","andoa","andor","andou","andua","aneel","anejo","anela","anele","anelo","anema","anesa","anete","aneto","anexa","anexe","angau","angel","anglo","angor","aniba","anibu","anido","anima","anime","anina","anita","anixi","anixo","aniao","anjao","anojo","anona","anori","anoso","anota","anote","anoto","ansar","antal","antar","antas","antia","antre","antao","anuam","anuas","anuai","anuem","anuir","anuis","anuiu","anuja","anula","anule","anulo","anuri","anuro","anuia","anaos","aoqui","aorta","apaga","apago","apapa","apara","apare","aparo","apeai","apear","apecu","apeei","apega","apego","apeia","apeie","apeio","apela","apele","apena","apene","apeno","apeou","apero","apicu","apiol","apita","apite","apitu","apiao","apodo","apoia","apoie","apois","apojo","apolo","apota","apraz","aprea","aptar","aptas","aptos","apuar","apupo","apura","apure","apuro","aqueu","aquem","arabi","arabu","araba","aracu","arada","arado","arais","araia","araio","araiu","arale","aramo","arama","arara","arari","aratu","arata","araue","arava","araxa","araca","arbim","arcai","arcal","arcam","arcas","arcaz","archa","arcou","ardam","ardas","ardei","ardem","ardes","ardeu","ardia","ardil","ardis","ardra","arear","areca",
 "arede","areio","areis","areja","areje","arejo","areou","arepa","arere","areao","arfai","arfam","arfar","arfas","arfei","arfem","arfes","arfil","arfir","arfou","argal","argas","argau","argel","argol","argos","argot","argua","argui","arguo","argao","ariar","aribe","aricu","arica","arico","arife","arigo","arila","arilo","arimo","arima","arina","aripo","ariri","ariti","arita","arjao","armai","armam","armas","armei","armem","armes","armim","armou","armur","armao","armeu","arnal","arnaz","arnes","aroca","arola","arpar","arpoa","arpoe","arpoo","arpao","arpeu","arque","arqui","arral","arras","arreu","arria","arrie","arrio","arrua","arses","artao","aruai","arube","aruca","aruga","arujo","aruma","aruru","arura","arval","arxar","arcao","areus","asada","asado","asana","ascii","aselo","asila","asile","asilo","asnal","asnas","asnil","asnis","asnos","aspar","aspes","aspre","assai","assam","assas","assaz","assei","assem","asses","assoa","assoe","assoo","assou","assua","astil","astim","astre","ataca","ataco","atada","atado","atais","atala","atana","atapu","atara","atare","atava","ateai","atear","ateei","ateia","ateie","ateio","ateis","atela","ateou","atera","ateus","ateve","atice","atico","atido","atina","atine","atino","atira","atire","atiro","atito","ativa","ative","ativo","atica","aticu","atled","atoar","atoba","atola","atole","atolo","atora","atoto","atrai","atril","atroo","atuai","atuam","atuas","atuei","atuem","atues","atuir","atuou","atura","ature","aturo","atxim","atens","atois","auari","auati","auacu","audaz","aueti","augar","auges","augir","auiba","aulir","aunar","auras","aurir","ausia","ausio","autua","autue","autuo","auuva","aucao","avano","avant","avara","avari","avare","avati","aveal","aveio","avena","aveao","aviai","aviam","aviar","avias","aviei","aviem","avier","avies","avios","aviou","avira","avisa","avise","avito","aviva","avive","avivo","avoar","avoei","avens","axabo","axexe","axial","axoxo","axura","azado","azala","azara","azare","azaro","azeda","azede","azera","azeri","aziar","azibo","azida","azina","azoar","azola","azote","azoto","azuis","azula","azule","azulo","acacu","acala","acame","acamo","acuba","aculo","acumi","aioli","aonio","auste","babai","babal","babam","babas","babau","babei","babel","babem","babes","bable","babou","babul","babui","babao","bacar","bacen","bachi","bacio","badal","badil","badio","badem","baeco","baena","baeta","bafar","bafio","bafum","bagar",
@@ -53,6 +53,21 @@ pal =  ["ababa","abaca","abada","abade","abado","abafa","abafe","abafo","abaju",
 'xango', 'xaoro', 'xarem', 'xareu', 'xerem', 'xexeu', 'ximbe', 'ximao','xinto', 'xuate', 'xenon', 'xenia', 'xenio', 'xifio', 'xilon', 'zagao','zambe', 'zarao', 'zuruo', 'zuido', 'zaibo', 'zinia', 'ziper', 'abaco','abavo', 'abies', 'abiga', 'abrus', 'absis', 'acade', 'acare', 'acaro','acave', 'acavo', 'acida', 'acido', 'acino', 'aclis', 'acope', 'acopo','acoro', 'acron', 'actia', 'adipe', 'adipo', 'afodo', 'agamo', 'agapa','agape', 'agaro', 'agata', 'agate', 'ageis', 'ageno', 'agino', 'agios','agono', 'agria', 'aguam', 'aguas', 'agues', 'aguia', 'alalo', 'alamo','album', 'alcea', 'alemo', 'alhia', 'alibi', 'alica', 'alife', 'alpea','alula', 'alveo', 'apage', 'apice', 'apios', 'apira', 'apiro', 'apoca','apode', 'aporo', 'apoto', 'aqueo', 'arabe', 'arcio', 'ardea', 'ardua','arduo', 'areas', 'argio', 'argon', 'arias', 'arida', 'arido', 'aries','arsis', 'arula', 'asaro', 'ascio', 'ascon', 'ascua', 'aspis', 'aster','astur', 'atele', 'atila', 'atimo', 'atipo', 'atomo', 'atona', 'atono','atrio', 'audio', 'aurea', 'aureo', 'avida', 'avido', 'avila', 'axilo','axone', 'azigo', 'azimo', 'amago', 'ambar', 'amnio', 'animo', 'anion',
 'anodo', 'ansia', 'ebano', 'ebeno', 'ebrio', 'ebulo', 'ecano', 'ecope','ecran', 'ecula', 'eculo', 'edico', 'edipo', 'efeta', 'efira', 'efode','efodo', 'eforo', 'egide', 'egrio', 'eguas', 'elafo', 'elate', 'enula','epica', 'epico', 'epoca', 'epura', 'equio', 'erbio', 'erebo', 'ereis','ergio', 'erica', 'erico', 'erina', 'esipo', 'esoce', 'esula', 'etego','etica', 'etico', 'etigo', 'etimo', 'evano', 'eider', 'emero', 'emese','emico', 'emulo', 'exito', 'exodo', 'exule', 'iamos', 'icaro', 'icone','icore', 'ictis', 'ictus', 'idola', 'idolo', 'igneo', 'ileon', 'ilion','impar', 'impia', 'impio', 'inaco', 'indio', 'indri', 'indua', 'ingua','inion', 'insua', 'inubo', 'inula', 'invio', 'isate', 'itaca', 'italo','itria', 'itrio', 'obelo', 'obice', 'obito', 'obolo', 'obulo', 'obvia','obvio', 'ocimo', 'ocrea', 'oculo', 'odios', 'ofrio', 'ofris', 'oleos','oleum', 'omnia', 'opalo', 'opera', 'opido', 'orfia', 'orfao', 'orfas','orgio', 'orgao', 'osido', 'osmio', 'ossea', 'osseo', 'ostio', 'otica','otico', 'otima', 'otimo', 'ovalo', 'ovano', 'ovnis', 'ovulo', 'oxido','omega', 'ubere', 'ubero', 'umero', 'umida', 'umido', 'uncia', 'uncus','ungue', 'unica', 'unico', 'unsia', 'uraco', 'urano', 'urceo', 'urico','uropo', 'usnea', 'uteis', 'utero', 'uvico', 'uvido', 'uvula']
 
+let pal = [];
+
+for(let i = 0; i < dicio.length; i++){
+  pal[i] = {
+    "p": dicio[i],
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0
+  }
+}
+
 acertos = [];
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -60,14 +75,17 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/static', express.static(__dirname + '/public'));
 
-// Ma[Math.floor(Math.random()*Ma.length)];
-
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get('/getpalavra', function (req, res) {
     res.send((Math.floor(Math.random()*pal.length)).toString());
+});
+
+app.post('/resposta', function (req, res) {
+  let id = req.body.id;
+  res.send(pal[id].p);
 });
 
 app.post('/corrigir', function (req, res) {
@@ -78,10 +96,14 @@ app.post('/corrigir', function (req, res) {
     const p4 = req.body.p4;
     const p5 = req.body.p5;
     const idx = req.body.idx;
-    const palavra = pal[idx];
+    const palavra = pal[idx].p;
     let quase = [];
     let acerto = [];
     let ret = [];
+
+    function ocorrencias(array, value) {
+      return array.filter((v) => (v === value)).length;
+    }
     
     if(p1 == palavra.charAt(0)){
       acerto.push(p1);
@@ -94,8 +116,9 @@ app.post('/corrigir', function (req, res) {
       quase.push(p1);
       ret[0] = 2;
     }
-  
+    
     if(p2 == palavra.charAt(1) && palavra.split(p2).length-1 > ocorrencias (quase, p2)){
+      acerto.push(p2);
       ret[1] = 1;
     }
     else if(!palavra.includes(p2)){
@@ -110,7 +133,7 @@ app.post('/corrigir', function (req, res) {
         ret[1] = 0;
       }
     }
-  
+    
     if(p3 == palavra.charAt(2) && palavra.split(p3).length-1 > ocorrencias (quase, p3)){
       acerto.push(p3);
       ret[2] = 1;
@@ -127,7 +150,7 @@ app.post('/corrigir', function (req, res) {
         ret[2] = 0;
       }
     }
-  
+    
     if(p4 == palavra.charAt(3) && palavra.split(p4).length-1 > ocorrencias (quase, p4)){
       acerto.push(p4);
       ret[3] = 1;
@@ -144,7 +167,7 @@ app.post('/corrigir', function (req, res) {
         ret[3] = 0;
       }
     }
-  
+    
     if(p5 == palavra.charAt(4) && palavra.split(p5).length-1 > ocorrencias (quase, p5)){
       acerto.push(p5);
       ret[4] = 1;
@@ -161,18 +184,18 @@ app.post('/corrigir', function (req, res) {
         ret[4] = 0;
       }
     }
-
-    res.send(ret);
+    
+    let resp = "";
+    for(let i = 0; i < ret.length; i++){
+      resp += ret[i].toString();
+    }
+    res.send(resp);
 });
-
-function ocorrencias(array, value) {
-    return array.filter((v) => (v === value)).length;
-}
 
 app.post('/verifica', function (req, res) {
     let palavra = req.body.palavra;
     let ret;
-    if(!pal.includes(palavra)){
+    if(pal.filter(e => e.p === palavra).length == 0){
         ret = "0";
     }
     else{
@@ -182,11 +205,23 @@ app.post('/verifica', function (req, res) {
 });
 
 app.post('/acertos', function (req, res) {
+  let palavra = parseInt(req.body.pal);
+  let acerto = req.body.acerto;
 
+  pal[palavra][acerto.toString()]++;
+
+  res.end();
 });
 
-app.get('/acertos', function (req, res) {
-    
+app.post('/getacertos', function (req, res) {
+  let palavra = req.body.pal;
+
+  ret = "";
+  for(let i = 1; i <= 7; i++){
+    ret += pal[palavra][i.toString()];
+  }
+
+  res.send(ret);
 });
 
 app.listen(3000);
