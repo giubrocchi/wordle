@@ -58,16 +58,127 @@ acertos = [];
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/static', express.static('public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 // Ma[Math.floor(Math.random()*Ma.length)];
 
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 app.get('/getpalavra', function (req, res) {
-    res.send(pal[Math.floor(Math.random()*Ma.length)]);
+    res.send((Math.floor(Math.random()*pal.length)).toString());
 });
 
 app.post('/corrigir', function (req, res) {
+    // 0 NAO TEM, 1 TA NO LUGAR CERTO E 2 TEM MAS NO LUGAR ERRADO
+    const p1 = req.body.p1;
+    const p2 = req.body.p2;
+    const p3 = req.body.p3;
+    const p4 = req.body.p4;
+    const p5 = req.body.p5;
+    const idx = req.body.idx;
+    const palavra = pal[idx];
+    let quase = [];
+    let acerto = [];
+    let ret = [];
+    
+    if(p1 == palavra.charAt(0)){
+      acerto.push(p1);
+      ret[0] = 1;
+    }
+    else if(!palavra.includes(p1)){
+      ret[0] = 0;
+    }
+    else{
+      quase.push(p1);
+      ret[0] = 2;
+    }
+  
+    if(p2 == palavra.charAt(1) && palavra.split(p2).length-1 > ocorrencias (quase, p2)){
+      ret[1] = 1;
+    }
+    else if(!palavra.includes(p2)){
+      ret[1] = 0;
+    }
+    else{
+      if(palavra.split(p2).length-1 > ocorrencias(acerto, p2) + ocorrencias (quase, p2)){
+        quase.push(p2);
+        ret[1] = 2;
+      }
+      else{
+        ret[1] = 0;
+      }
+    }
+  
+    if(p3 == palavra.charAt(2) && palavra.split(p3).length-1 > ocorrencias (quase, p3)){
+      acerto.push(p3);
+      ret[2] = 1;
+    }
+    else if(!palavra.includes(p3)){
+      ret[2] = 0;
+    }
+    else{
+      if(palavra.split(p3).length-1 > ocorrencias(acerto, p3) + ocorrencias (quase, p3)){
+        quase.push(p3);
+        ret[2] = 2;
+      }
+      else{
+        ret[2] = 0;
+      }
+    }
+  
+    if(p4 == palavra.charAt(3) && palavra.split(p4).length-1 > ocorrencias (quase, p4)){
+      acerto.push(p4);
+      ret[3] = 1;
+    }
+    else if(!palavra.includes(p4)){
+      ret[3] = 0;
+    }
+    else{
+      if(palavra.split(p4).length-1 > ocorrencias(acerto, p4) + ocorrencias (quase, p4)){
+        quase.push(p4);
+        ret[3] = 2;
+      }
+      else{
+        ret[3] = 0;
+      }
+    }
+  
+    if(p5 == palavra.charAt(4) && palavra.split(p5).length-1 > ocorrencias (quase, p5)){
+      acerto.push(p5);
+      ret[4] = 1;
+    }
+    else if(!palavra.includes(p5)){
+      ret[4] = 0;
+    }
+    else{
+      if(palavra.split(p5).length-1 > ocorrencias(acerto, p5) + ocorrencias (quase, p5)){
+        quase.push(p5);
+        ret[4] = 2;
+      }
+      else{
+        ret[4] = 0;
+      }
+    }
 
+    res.send(ret);
+});
+
+function ocorrencias(array, value) {
+    return array.filter((v) => (v === value)).length;
+}
+
+app.post('/verifica', function (req, res) {
+    let palavra = req.body.palavra;
+    let ret;
+    if(!pal.includes(palavra)){
+        ret = "0";
+    }
+    else{
+        ret = "1";
+    }
+    res.send(ret);
 });
 
 app.post('/acertos', function (req, res) {
