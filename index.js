@@ -47,7 +47,7 @@ app.post('/resposta', function (req, res) {
 app.get('/user', function (req, res) {
   let id = crypto.randomBytes(16).toString("hex");
 
-  while(users.includes(id)){
+  while(users.filter((v) => (v.id === id)).length > 0){
     id = crypto.randomBytes(16).toString("hex");
   }
   
@@ -199,16 +199,39 @@ app.post('/acertos', function (req, res) {
   let acerto = req.body.acerto;
   let user = req.body.user;
 
-  if(user === null)
-    res.end();
-
-  for(let i=0; i<users.length; i++){
-    if(users[i].id == user){
-      users[i][acerto.toString()]++;
+  if(users.filter((v) => (v.id === user)).length == 0){
+    let id = crypto.randomBytes(16).toString("hex");
+    while(users.filter((v) => (v.id === id)).length > 0){
+      id = crypto.randomBytes(16).toString("hex");
     }
-  }
+    users.push({
+      "id": id,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    });
 
-  res.end();
+    for(let i=0; i<users.length; i++){
+      if(users[i].id == id){
+        users[i][acerto.toString()]++;
+      }
+    }
+    
+    res.send(id);
+  }
+  else{
+    for(let i=0; i<users.length; i++){
+      if(users[i].id == user){
+        users[i][acerto.toString()]++;
+      }
+    }
+  
+    res.send();
+  }
 });
 
 app.post('/getacertos', function (req, res) {

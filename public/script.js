@@ -205,7 +205,9 @@ function mudaRodada(rod){
         document.getElementById(id).readOnly = true;
       }
     
-      enviarStats(ant, () => {
+      enviarStats(ant, (valor) => {
+        if(valor != '')
+          localStorage.setItem("user", valor);
         getStats(valores => setTimeout(function(){mostraStats(valores, resp, rod)}, 2000))
       });
       return;
@@ -217,7 +219,9 @@ function mudaRodada(rod){
         document.getElementById(id).readOnly = true;
       }
 
-      enviarStats(rod, () => {
+      enviarStats(rod, (valor) => {
+        if(valor != '')
+          localStorage.setItem("user", valor);
         getStats(valores => setTimeout(function(){mostraStats(valores, resp, rod+1)}, 2000))
       });
       return;
@@ -257,7 +261,7 @@ function enviarStats(rodada, cb){
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-      return cb();
+      return cb(xmlhttp.responseText);
   }
   xmlhttp.send(req);
 }
