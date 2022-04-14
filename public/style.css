@@ -1,0 +1,84 @@
+input{
+  width: 40px;
+  font-size: 25px;
+  margin-bottom: 25px;
+  outline: none;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+input:hover{
+  border-color: black;
+  border-width: 1px;
+}
+
+body{
+  text-align: center;
+  padding-top: 5%;
+}
+
+#mensagem{
+  font-family: sans-serif;
+  line-height: 30px;
+  height: 60px;
+}
+
+.letras{
+  display: inline-block;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 140%;
+  background-color: #d6d6d6;
+  width: 20px;
+  padding: 4px;
+  margin: 0.5%;
+  margin-bottom: 25px;
+  border-radius: 8px;
+}
+
+#finalizar{
+  position: fixed;
+  background-color: white;
+  box-shadow: -5px 5px 10px #8a8a8a;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: fit-content;
+  border-radius: 25px;
+  display: none;
+  font-family: 'courier';
+  font-size: 23px;
+  line-height: 30px;
+  padding: 30px 10px 30px 10px;
+}
+
+#reload{
+  background-color: #cccccc;
+  border-width: 0px;
+  font-size: 20px;
+  border-radius: 15px;
+  padding: 8px 15px 8px 15px;
+  font-family: 'courier';
+}
+
+#reload:hover{
+  background-color: #b3b3b3;
+}
+
+#msg-finalizar{
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+#stats{
+  margin-bottom: 40px;
+}
+
+#atual{
+  margin: 0px;
+  color: #58bdcc;
+  font-weight: bold;
+}
