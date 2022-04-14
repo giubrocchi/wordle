@@ -3,9 +3,6 @@ let rodada = 1;
 let acerto = 0;
 let tec;
 
-//TIRAR ISSO ANTES
-localStorage.clear();
-
 function load(){
   if (window.matchMedia('(max-device-width: 960px)').matches){
     for(let i = 1; i < 6; i++){
