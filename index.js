@@ -80,6 +80,7 @@ app.post('/corrigir', function (req, res) {
     else if(lg == 'en')
       pal = ing;
     const palavra = pal[idx];
+    const guess = [p1, p2, p3, p4, p5];
     let quase = [];
     let acerto = [];
     let ret = [];
@@ -87,84 +88,23 @@ app.post('/corrigir', function (req, res) {
     function ocorrencias(array, value) {
       return array.filter((v) => (v === value)).length;
     }
-    
-    if(p1 == palavra.charAt(0)){
-      acerto.push(p1);
-      ret[0] = 1;
-    }
-    else if(!palavra.includes(p1)){
-      ret[0] = 0;
-    }
-    else{
-      quase.push(p1);
-      ret[0] = 2;
-    }
-    
-    if(p2 == palavra.charAt(1) && palavra.split(p2).length-1 > ocorrencias (quase, p2)){
-      acerto.push(p2);
-      ret[1] = 1;
-    }
-    else if(!palavra.includes(p2)){
-      ret[1] = 0;
-    }
-    else{
-      if(palavra.split(p2).length-1 > ocorrencias(acerto, p2) + ocorrencias (quase, p2)){
-        quase.push(p2);
-        ret[1] = 2;
+
+    for(let i = 0; i < palavra.length; i++){
+      if(guess[i] == palavra.charAt(i) && palavra.split(guess[i]).length-1 > ocorrencias (quase, guess[i])){
+        acerto.push(guess[i]);
+        ret[i] = 1;
+      }
+      else if(!palavra.includes(guess[i])){
+        ret[i] = 0;
       }
       else{
-        ret[1] = 0;
-      }
-    }
-    
-    if(p3 == palavra.charAt(2) && palavra.split(p3).length-1 > ocorrencias (quase, p3)){
-      acerto.push(p3);
-      ret[2] = 1;
-    }
-    else if(!palavra.includes(p3)){
-      ret[2] = 0;
-    }
-    else{
-      if(palavra.split(p3).length-1 > ocorrencias(acerto, p3) + ocorrencias (quase, p3)){
-        quase.push(p3);
-        ret[2] = 2;
-      }
-      else{
-        ret[2] = 0;
-      }
-    }
-    
-    if(p4 == palavra.charAt(3) && palavra.split(p4).length-1 > ocorrencias (quase, p4)){
-      acerto.push(p4);
-      ret[3] = 1;
-    }
-    else if(!palavra.includes(p4)){
-      ret[3] = 0;
-    }
-    else{
-      if(palavra.split(p4).length-1 > ocorrencias(acerto, p4) + ocorrencias (quase, p4)){
-        quase.push(p4);
-        ret[3] = 2;
-      }
-      else{
-        ret[3] = 0;
-      }
-    }
-    
-    if(p5 == palavra.charAt(4) && palavra.split(p5).length-1 > ocorrencias (quase, p5)){
-      acerto.push(p5);
-      ret[4] = 1;
-    }
-    else if(!palavra.includes(p5)){
-      ret[4] = 0;
-    }
-    else{
-      if(palavra.split(p5).length-1 > ocorrencias(acerto, p5) + ocorrencias (quase, p5)){
-        quase.push(p5);
-        ret[4] = 2;
-      }
-      else{
-        ret[4] = 0;
+        if(palavra.split(guess[i]).length-1 > ocorrencias(acerto, guess[i]) + ocorrencias (quase, guess[i])){
+          quase.push(guess[i]);
+          ret[i] = 2;
+        }
+        else{
+          ret[i] = 0;
+        }
       }
     }
     
