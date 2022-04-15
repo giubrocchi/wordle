@@ -7,11 +7,17 @@ input{
   text-transform: uppercase;
   border-radius: 10px;
   border-width: 1px;
+  border-color: #c5c5c5;
+  caret-color: transparent;
 }
 
 input:hover{
-  border-color: black;
+  border-color: #c5c5c5;
   border-width: 1px;
+}
+
+input:focus{
+  border-color: black;
 }
 
 body{
@@ -104,9 +110,4 @@ body{
 
 #box-lg{
   margin-bottom: 30px;
-}
-
-#ad{
-  position: fixed;
-  left: 5%;
 }

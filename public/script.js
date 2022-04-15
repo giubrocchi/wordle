@@ -324,7 +324,7 @@ function reload(){
     if(i < 5 && !window.matchMedia('(max-device-width: 960px)').matches){
       inputs[i].readOnly = false;
       if(i == 0)
-      inputs[i].focus();
+        inputs[i].focus();
     }
     inputs[i].style.backgroundColor="white";
     inputs[i].value = "";
