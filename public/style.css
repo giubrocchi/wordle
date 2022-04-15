@@ -105,3 +105,8 @@ body{
 #box-lg{
   margin-bottom: 30px;
 }
+
+#ad{
+  position: fixed;
+  left: 5%;
+}
