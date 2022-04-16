@@ -30,17 +30,15 @@ document.addEventListener("keydown", function(e) {
     let coluna = document.activeElement.id.charAt(6);
     if(document.activeElement.value != "" || coluna == "1")
       return;
-    focoApaga(linha + coluna);
+    focoApaga(linha, coluna);
   }
 });
 
-function focoApaga(id){
-  if(id === null)
+function focoApaga(linha, coluna){
+  if(linha === null || coluna === null)
     return;
-  let linha = id.charAt(0);
-  let coluna = id.charAt(1);
+
   let nome = linha + "letra" + coluna;
-  
   document.getElementById(nome).value = "";
   coluna  = coluna - 1;
   nome = linha + "letra" + coluna;
@@ -81,52 +79,20 @@ function novoUser(cb){
 }
 
 function verifica(){
-  let id = rodada.toString() + "letra1";
-  let p1 = document.getElementById(id).value;
-  if(p1 == '' || p1.search(/[^a-zA-Z]+/) == 0){
-    document.getElementById("mensagem").innerHTML = "Caracteres inválidos";
-    setTimeout(tirarAlerta, 5000);
-    return;
+  let palavra = "";
+  for(let i = 1; i < 6; i++){
+    let id = rodada.toString() + "letra" + i;
+    let p = document.getElementById(id).value.toLowerCase();
+    palavra += p;
   }
 
-  id = rodada.toString() + "letra2";
-  let p2 = document.getElementById(id).value;
-  if(p2 == '' || p2.search(/[^a-zA-Z]+/) == 0){
-    document.getElementById("mensagem").innerHTML = "Caracteres inválidos";
-    setTimeout(tirarAlerta, 5000);
-    return;
+  for(let i = 0; i < palavra.length; i++){
+    if(palavra.charAt(i) == '' || palavra.charAt(i).search(/[^a-zA-Z]+/) == 0){
+      document.getElementById("mensagem").innerHTML = "Caracteres inválidos";
+      setTimeout(tirarAlerta, 5000);
+      return;
+    }
   }
-
-  id = rodada.toString() + "letra3";
-  let p3 = document.getElementById(id).value;
-  if(p3 == '' || p3.search(/[^a-zA-Z]+/) == 0){
-    document.getElementById("mensagem").innerHTML = "Caracteres inválidos";
-    setTimeout(tirarAlerta, 5000);
-    return;
-  };
-
-  id = rodada.toString() + "letra4";
-  let p4 = document.getElementById(id).value;
-  if(p4 == '' || p4.search(/[^a-zA-Z]+/) == 0){
-    document.getElementById("mensagem").innerHTML = "Caracteres inválidos";
-    setTimeout(tirarAlerta, 5000);
-    return;
-  }
-
-  id = rodada.toString() + "letra5";
-  let p5 = document.getElementById(id).value;
-  if(p5 == '' || p5.search(/[^a-zA-Z]+/) == 0){
-    document.getElementById("mensagem").innerHTML = "Caracteres inválidos";
-    setTimeout(tirarAlerta, 5000);
-    return;
-  }
-
-  p1 = p1.toLowerCase();
-  p2 = p2.toLowerCase();
-  p3 = p3.toLowerCase();
-  p4 = p4.toLowerCase();
-  p5 = p5.toLowerCase();
-  let palavra = p1 + p2 + p3 + p4 + p5;
 
   let ret;
   verificarPal(palavra, valor => {
@@ -137,8 +103,8 @@ function verifica(){
       return;
     }
 
-    comparar(p1, p2, p3, p4, p5, valor => {
-      mostraResultado(valor, p1, p2, p3, p4, p5);
+    comparar(palavra, valor => {
+      mostraResultado(valor, palavra);
       mudaRodada(++rodada);
     });
   });
@@ -155,8 +121,8 @@ function verificarPal(palavra, cb){
   xmlhttp.send("palavra=" + palavra + "&lg=" + lg);
 }
 
-function comparar(p1, p2, p3, p4, p5, cb){
-  let req = "p1=" + p1 + "&p2=" + p2 + "&p3=" + p3 + "&p4=" + p4 + "&p5=" + p5 + "&idx=" + pal + "&lg=" + lg;
+function comparar(palavra, cb){
+  let req = "pal=" + palavra + "&idx=" + pal + "&lg=" + lg;
   xmlhttp = new XMLHttpRequest();
   xmlhttp.open("POST","/corrigir", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -167,9 +133,9 @@ function comparar(p1, p2, p3, p4, p5, cb){
   xmlhttp.send(req);
 }
 
-function mostraResultado(valor, p1, p2, p3, p4, p5){
+function mostraResultado(valor, palavra){
   acerto = 0;
-  let inseridas = [p1, p2, p3, p4, p5];
+  let inseridas = palavra;
   let letra = [];
   
   for(let i = 0; i < inseridas.length; i++){
@@ -177,18 +143,18 @@ function mostraResultado(valor, p1, p2, p3, p4, p5){
     let id1 = rodada.toString() + "letra" + (i + 1).toString();
     if(letra[i] == 1){
       document.getElementById(id1).style.backgroundColor = "#3bd165";
-      document.getElementById(inseridas[i]).style.backgroundColor = "#3bd165";
+      document.getElementById(inseridas.charAt(i)).style.backgroundColor = "#3bd165";
       acerto ++;
     }
     else if(letra[i] == 0){
       document.getElementById(id1).style.backgroundColor = "#8c8c8c";
-      if(window.getComputedStyle(document.getElementById(inseridas[i]), null).getPropertyValue('background-color') == "rgb(214, 214, 214)")
-        document.getElementById(inseridas[i]).style.backgroundColor = "#8c8c8c";
+      if(window.getComputedStyle(document.getElementById(inseridas.charAt(i)), null).getPropertyValue('background-color') == "rgb(214, 214, 214)")
+        document.getElementById(inseridas.charAt(i)).style.backgroundColor = "#8c8c8c";
     }
     else{
       document.getElementById(id1).style.backgroundColor = "#edd432";
-      if(window.getComputedStyle(document.getElementById(inseridas[i]), null).getPropertyValue('background-color') != "rgb(59, 209, 101)")
-        document.getElementById(inseridas[i]).style.backgroundColor = "#edd432";
+      if(window.getComputedStyle(document.getElementById(inseridas.charAt(i)), null).getPropertyValue('background-color') != "rgb(59, 209, 101)")
+        document.getElementById(inseridas.charAt(i)).style.backgroundColor = "#edd432";
     }
   }
 }

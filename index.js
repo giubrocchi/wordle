@@ -67,11 +67,7 @@ app.get('/user', function (req, res) {
 
 app.post('/corrigir', function (req, res) {
     // 0 NAO TEM, 1 TA NO LUGAR CERTO E 2 TEM MAS NO LUGAR ERRADO
-    const p1 = req.body.p1;
-    const p2 = req.body.p2;
-    const p3 = req.body.p3;
-    const p4 = req.body.p4;
-    const p5 = req.body.p5;
+    const guess = req.body.pal;
     const idx = req.body.idx;
     const lg = req.body.lg;
     let pal;
@@ -80,7 +76,6 @@ app.post('/corrigir', function (req, res) {
     else if(lg == 'en')
       pal = ing;
     const palavra = pal[idx];
-    const guess = [p1, p2, p3, p4, p5];
     let quase = [];
     let acerto = [];
     let ret = [];
@@ -90,16 +85,16 @@ app.post('/corrigir', function (req, res) {
     }
 
     for(let i = 0; i < palavra.length; i++){
-      if(guess[i] == palavra.charAt(i) && palavra.split(guess[i]).length-1 > ocorrencias (quase, guess[i])){
-        acerto.push(guess[i]);
+      if(guess.charAt(i) == palavra.charAt(i) && palavra.split(guess.charAt(i)).length-1 > ocorrencias (quase, guess.charAt(i))){
+        acerto.push(guess.charAt(i));
         ret[i] = 1;
       }
-      else if(!palavra.includes(guess[i])){
+      else if(!palavra.includes(guess.charAt(i))){
         ret[i] = 0;
       }
       else{
-        if(palavra.split(guess[i]).length-1 > ocorrencias(acerto, guess[i]) + ocorrencias (quase, guess[i])){
-          quase.push(guess[i]);
+        if(palavra.split(guess.charAt(i)).length-1 > ocorrencias(acerto, guess.charAt(i)) + ocorrencias (quase, guess.charAt(i))){
+          quase.push(guess.charAt(i));
           ret[i] = 2;
         }
         else{
